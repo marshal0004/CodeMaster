@@ -1,19 +1,9 @@
 # codeMaster
 
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/release/python-3120/)
-[![License](https://img.shields.io/github/license/mistralai/mistral-codemaster)](https://github.com/mistralai/mistral-codemaster/blob/main/LICENSE)
 
-```
-██████████████████░░
-██████████████████░░
-████  ██████  ████░░
-████    ██    ████░░
-████          ████░░
-████  ██  ██  ████░░
-██      ██      ██░░
-██████████████████░░
-██████████████████░░
-```
+
+
 
 **Open-source CLI coding assistant with local LLM support.**
 
@@ -578,7 +568,7 @@ This affects where codeMaster looks for:
 
 ## Editors/IDEs
 
-Mistral codeMaster can be used in text editors and IDEs that support [Agent Client Protocol](https://agentclientprotocol.com/overview/clients). See the [ACP Setup documentation](docs/acp-setup.md) for setup instructions for various editors and IDEs.
+codeMaster can be used in text editors and IDEs that support [Agent Client Protocol](https://agentclientprotocol.com/overview/clients). See the [ACP Setup documentation](docs/acp-setup.md) for setup instructions for various editors and IDEs.
 
 ## Resources
 
@@ -591,7 +581,7 @@ Use of codeMaster is subject to our [Privacy Policy](https://legal.mistral.ai/te
 
 ## License
 
-Copyright 2025 Mistral AI
+Copyright 2025 codeMaster AI
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
