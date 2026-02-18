@@ -19,37 +19,26 @@
 
 codeMaster is a command-line coding assistant that works with both cloud-based and local LLM models (via Ollama). It provides a conversational interface to your codebase, allowing you to use natural language to explore, modify, and interact with your projects through a powerful set of tools.
 
-> [!WARNING]
-> Mistral Vibe works on Windows, but we officially support and target UNIX environments.
+> [!NOTE]
+> codeMaster works on Windows, but we officially support and target UNIX environments.
 
-### One-line install (recommended)
+### Installation
 
-**Linux and macOS**
-
-```bash
-curl -LsSf https://mistral.ai/vibe/install.sh | bash
-```
-
-**Windows**
-
-First, install uv
-```bash
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-Then, use uv command below.
-
-### Using uv
+**Using pip**
 
 ```bash
-uv tool install mistral-vibe
+pip install -e .
 ```
 
-### Using pip
+**Using uv**
 
 ```bash
-pip install mistral-vibe
+uv pip install -e .
 ```
+
+### Quick Setup
+
+After installation, codeMaster will be available via the `codemaster` command.
 
 ## Table of Contents
 
