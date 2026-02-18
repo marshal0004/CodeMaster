@@ -1,8 +1,6 @@
-# Mistral Vibe
+# codeMaster
 
-[![PyPI Version](https://img.shields.io/pypi/v/mistral-vibe)](https://pypi.org/project/mistral-vibe)
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/release/python-3120/)
-[![CI Status](https://github.com/mistralai/mistral-vibe/actions/workflows/ci.yml/badge.svg)](https://github.com/mistralai/mistral-vibe/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/mistralai/mistral-vibe)](https://github.com/mistralai/mistral-vibe/blob/main/LICENSE)
 
 ```
@@ -17,9 +15,9 @@
 ██████████████████░░
 ```
 
-**Mistral's open-source CLI coding assistant.**
+**Open-source CLI coding assistant with local LLM support.**
 
-Mistral Vibe is a command-line coding assistant powered by Mistral's models. It provides a conversational interface to your codebase, allowing you to use natural language to explore, modify, and interact with your projects through a powerful set of tools.
+codeMaster is a command-line coding assistant that works with both cloud-based and local LLM models (via Ollama). It provides a conversational interface to your codebase, allowing you to use natural language to explore, modify, and interact with your projects through a powerful set of tools.
 
 > [!WARNING]
 > Mistral Vibe works on Windows, but we officially support and target UNIX environments.
