@@ -111,7 +111,7 @@ codemaster --agent plan
 
 ### Subagents and Task Delegation
 
-Vibe supports subagents for delegating tasks. Subagents run independently and can perform specialized work without user interaction, preventing the context from being overloaded.
+codeMaster supports subagents for delegating tasks. Subagents run independently and can perform specialized work without user interaction, preventing the context from being overloaded.
 
 The `task` tool allows the agent to delegate work to subagents:
 
@@ -123,7 +123,7 @@ The `task` tool allows the agent to delegate work to subagents:
 > task(task="Analyze the project structure and architecture", agent="explore")
 ```
 
-Create custom subagents by adding `agent_type = "subagent"` to your agent configuration. Vibe comes with a built-in subagent called `explore`, a read-only subagent for codebase exploration used internally for delegation.
+Create custom subagents by adding `agent_type = "subagent"` to your agent configuration. codeMaster comes with a built-in subagent called `explore`, a read-only subagent for codebase exploration used internally for delegation.
 
 ### Interactive User Questions
 
