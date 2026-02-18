@@ -77,6 +77,7 @@ After installation, codeMaster will be available via the `codemaster` command.
 ## Features
 
 - **Interactive Chat**: A conversational AI agent that understands your requests and breaks down complex tasks.
+- **Local & Cloud LLM Support**: Works with Ollama (local models) and cloud APIs (Mistral, OpenAI, etc.)
 - **Powerful Toolset**: A suite of tools for file manipulation, code searching, version control, and command execution, right from the chat prompt.
   - Read, write, and patch files (`read_file`, `write_file`, `search_replace`).
   - Execute shell commands in a stateful terminal (`bash`).
@@ -84,7 +85,7 @@ After installation, codeMaster will be available via the `codemaster` command.
   - Manage a `todo` list to track the agent's work.
   - Ask interactive questions to gather user input (`ask_user_question`).
   - Delegate tasks to subagents for parallel work (`task`).
-- **Project-Aware Context**: Vibe automatically scans your project's file structure and Git status to provide relevant context to the agent, improving its understanding of your codebase.
+- **Project-Aware Context**: codeMaster automatically scans your project's file structure and Git status to provide relevant context to the agent, improving its understanding of your codebase.
 - **Advanced CLI Experience**: Built with modern libraries for a smooth and efficient workflow.
   - Autocompletion for slash commands (`/`) and file paths (`@`).
   - Persistent command history.
