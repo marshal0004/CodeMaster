@@ -1,7 +1,7 @@
 # codeMaster
 
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/release/python-3120/)
-[![License](https://img.shields.io/github/license/mistralai/mistral-vibe)](https://github.com/mistralai/mistral-vibe/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/mistralai/mistral-codemaster)](https://github.com/mistralai/mistral-codemaster/blob/main/LICENSE)
 
 ```
 ██████████████████░░
@@ -68,7 +68,7 @@ After installation, codeMaster will be available via the `codemaster` command.
   - [MCP Server Configuration](#mcp-server-configuration)
   - [Session Management](#session-management)
   - [Update Settings](#update-settings)
-  - [Custom Vibe Home Directory](#custom-vibe-home-directory)
+  - [Custom codeMaster Home Directory](#custom-codemaster-home-directory)
 - [Editors/IDEs](#editorsides)
 - [Resources](#resources)
 - [Data collection & usage](#data-collection--usage)
@@ -197,7 +197,7 @@ Most modern terminals should work, but older or minimal terminal emulators may h
 
 ### Interactive Mode
 
-Simply run `vibe` to enter the interactive chat loop.
+Simply run `codemaster` to enter the interactive chat loop.
 
 - **Multi-line Input**: Press `Ctrl+J` or `Shift+Enter` for select terminals to insert a newline.
 - **File Paths**: Reference files in your prompt using the `@` symbol for smart autocompletion (e.g., `> Read the file @src/agent.py`).
@@ -207,28 +207,28 @@ Simply run `vibe` to enter the interactive chat loop.
 - **Todo View Toggle**: Press `Ctrl+T` to toggle the todo list view.
 - **Auto-Approve Toggle**: Press `Shift+Tab` to toggle auto-approve mode on/off.
 
-You can start Vibe with a prompt using the following command:
+You can start codeMaster with a prompt using the following command:
 
 ```bash
-vibe "Refactor the main function in cli/main.py to be more modular."
+codemaster "Refactor the main function in cli/main.py to be more modular."
 ```
 
 **Note**: The `--auto-approve` flag automatically approves all tool executions without prompting. In interactive mode, you can also toggle auto-approve on/off using `Shift+Tab`.
 
 ### Trust Folder System
 
-Vibe includes a trust folder system to ensure you only run the agent in directories you trust. When you first run Vibe in a new directory which contains a `.vibe` subfolder, it may ask you to confirm whether you trust the folder.
+codeMaster includes a trust folder system to ensure you only run the agent in directories you trust. When you first run codeMaster in a new directory which contains a `.codemaster` subfolder, it may ask you to confirm whether you trust the folder.
 
-Trusted folders are remembered for future sessions. You can manage trusted folders through its configuration file `~/.vibe/trusted_folders.toml`.
+Trusted folders are remembered for future sessions. You can manage trusted folders through its configuration file `~/.codemaster/trusted_folders.toml`.
 
 This safety feature helps prevent accidental execution in sensitive directories.
 
 ### Programmatic Mode
 
-You can run Vibe non-interactively by piping input or using the `--prompt` flag. This is useful for scripting.
+You can run codeMaster non-interactively by piping input or using the `--prompt` flag. This is useful for scripting.
 
 ```bash
-vibe --prompt "Refactor the main function in cli/main.py to be more modular."
+codemaster --prompt "Refactor the main function in cli/main.py to be more modular."
 ```
 
 By default, it uses `auto-approve` mode.
@@ -248,7 +248,7 @@ When using `--prompt`, you can specify additional options:
 Example:
 
 ```bash
-vibe --prompt "Analyze the codebase" --max-turns 5 --max-price 1.0 --output json
+codemaster --prompt "Analyze the codebase" --max-turns 5 --max-price 1.0 --output json
 ```
 
 ## Slash Commands
@@ -257,7 +257,7 @@ Use slash commands for meta-actions and configuration changes during a session.
 
 ### Built-in Slash Commands
 
-Vibe provides several built-in slash commands. Use slash commands by typing them in the input box:
+codeMaster provides several built-in slash commands. Use slash commands by typing them in the input box:
 
 ```
 > /help
@@ -265,7 +265,7 @@ Vibe provides several built-in slash commands. Use slash commands by typing them
 
 ### Custom Slash Commands via Skills
 
-You can define your own slash commands through the skills system. Skills are reusable components that extend Vibe's functionality.
+You can define your own slash commands through the skills system. Skills are reusable components that extend codeMaster's functionality.
 
 To create a custom slash command:
 
@@ -287,13 +287,13 @@ Custom slash commands appear in the autocompletion menu alongside built-in comma
 
 ## Skills System
 
-Vibe's skills system allows you to extend functionality through reusable components. Skills can add new tools, slash commands, and specialized behaviors.
+codeMaster's skills system allows you to extend functionality through reusable components. Skills can add new tools, slash commands, and specialized behaviors.
 
-Vibe follows the [Agent Skills specification](https://agentskills.io/specification) for skill format and structure.
+codeMaster follows the [Agent Skills specification](https://agentskills.io/specification) for skill format and structure.
 
 ### Creating Skills
 
-Skills are defined in directories with a `SKILL.md` file containing metadata in YAML frontmatter. For example, `~/.vibe/skills/code-review/SKILL.md`:
+Skills are defined in directories with a `SKILL.md` file containing metadata in YAML frontmatter. For example, `~/.codemaster/skills/code-review/SKILL.md`:
 
 ```markdown
 ---
@@ -315,12 +315,12 @@ This skill helps analyze code quality and suggest improvements.
 
 ### Skill Discovery
 
-Vibe discovers skills from multiple locations:
+codeMaster discovers skills from multiple locations:
 
 1. **Custom paths**: Configured in `config.toml` via `skill_paths`
 2. **Standard Agent Skills path** (project root, trusted folders only): `.agents/skills/` — [Agent Skills](https://agentskills.io) standard
-3. **Local project skills** (project root, trusted folders only): `.vibe/skills/` in your project
-4. **Global skills directory**: `~/.vibe/skills/`
+3. **Local project skills** (project root, trusted folders only): `.codemaster/skills/` in your project
+4. **Global skills directory**: `~/.codemaster/skills/`
 
 ```toml
 skill_paths = ["/path/to/custom/skills"]
@@ -344,17 +344,17 @@ Skills support the same pattern matching as tools (exact names, glob patterns, a
 
 ### Configuration File Location
 
-Vibe is configured via a `config.toml` file. It looks for this file first in `./.vibe/config.toml` and then falls back to `~/.vibe/config.toml`.
+codeMaster is configured via a `config.toml` file. It looks for this file first in `./.codemaster/config.toml` and then falls back to `~/.codemaster/config.toml`.
 
 ### API Key Configuration
 
-To use Vibe, you'll need a Mistral API key. You can obtain one by signing up at [https://console.mistral.ai](https://console.mistral.ai).
+To use codeMaster, you'll need a Mistral API key. You can obtain one by signing up at [https://console.mistral.ai](https://console.mistral.ai).
 
-You can configure your API key using `vibe --setup`, or through one of the methods below.
+You can configure your API key using `codemaster --setup`, or through one of the methods below.
 
-Vibe supports multiple ways to configure your API keys:
+codeMaster supports multiple ways to configure your API keys:
 
-1. **Interactive Setup (Recommended for first-time users)**: When you run Vibe for the first time or if your API key is missing, Vibe will prompt you to enter it. The key will be securely saved to `~/.vibe/.env` for future sessions.
+1. **Interactive Setup (Recommended for first-time users)**: When you run codeMaster for the first time or if your API key is missing, codeMaster will prompt you to enter it. The key will be securely saved to `~/.codemaster/.env` for future sessions.
 
 2. **Environment Variables**: Set your API key as an environment variable:
 
@@ -362,19 +362,19 @@ Vibe supports multiple ways to configure your API keys:
    export MISTRAL_API_KEY="your_mistral_api_key"
    ```
 
-3. **`.env` File**: Create a `.env` file in `~/.vibe/` and add your API keys:
+3. **`.env` File**: Create a `.env` file in `~/.codemaster/` and add your API keys:
 
    ```bash
    MISTRAL_API_KEY=your_mistral_api_key
    ```
 
-   Vibe automatically loads API keys from `~/.vibe/.env` on startup. Environment variables take precedence over the `.env` file if both are set.
+   codeMaster automatically loads API keys from `~/.codemaster/.env` on startup. Environment variables take precedence over the `.env` file if both are set.
 
-**Note**: The `.env` file is specifically for API keys and other provider credentials. General Vibe configuration should be done in `config.toml`.
+**Note**: The `.env` file is specifically for API keys and other provider credentials. General codeMaster configuration should be done in `config.toml`.
 
 ### Custom System Prompts
 
-You can create custom system prompts to replace the default one (`prompts/cli.md`). Create a markdown file in the `~/.vibe/prompts/` directory with your custom prompt content.
+You can create custom system prompts to replace the default one (`prompts/cli.md`). Create a markdown file in the `~/.codemaster/prompts/` directory with your custom prompt content.
 
 To use a custom system prompt, set the `system_prompt_id` in your configuration to match the filename (without the `.md` extension):
 
@@ -383,21 +383,21 @@ To use a custom system prompt, set the `system_prompt_id` in your configuration 
 system_prompt_id = "my_custom_prompt"
 ```
 
-This will load the prompt from `~/.vibe/prompts/my_custom_prompt.md`.
+This will load the prompt from `~/.codemaster/prompts/my_custom_prompt.md`.
 
 ### Custom Agent Configurations
 
-You can create custom agent configurations for specific use cases (e.g., red-teaming, specialized tasks) by adding agent-specific TOML files in the `~/.vibe/agents/` directory.
+You can create custom agent configurations for specific use cases (e.g., red-teaming, specialized tasks) by adding agent-specific TOML files in the `~/.codemaster/agents/` directory.
 
-To use a custom agent, run Vibe with the `--agent` flag:
+To use a custom agent, run codeMaster with the `--agent` flag:
 
 ```bash
-vibe --agent my_custom_agent
+codemaster --agent my_custom_agent
 ```
 
-Vibe will look for a file named `my_custom_agent.toml` in the agents directory and apply its configuration.
+codeMaster will look for a file named `my_custom_agent.toml` in the agents directory and apply its configuration.
 
-Example custom agent configuration (`~/.vibe/agents/redteam.toml`):
+Example custom agent configuration (`~/.codemaster/agents/redteam.toml`):
 
 ```toml
 # Custom agent configuration for red-teaming
@@ -415,7 +415,7 @@ permission = "always"
 permission = "always"
 ```
 
-Note: This implies that you have set up a redteam prompt named `~/.vibe/prompts/redteam.md`.
+Note: This implies that you have set up a redteam prompt named `~/.codemaster/prompts/redteam.md`.
 
 ### Tool Management
 
@@ -444,7 +444,7 @@ Notes:
 
 ### MCP Server Configuration
 
-You can configure MCP (Model Context Protocol) servers to extend Vibe's capabilities. Add MCP server configurations under the `mcp_servers` section:
+You can configure MCP (Model Context Protocol) servers to extend codeMaster's capabilities. Add MCP server configurations under the `mcp_servers` section:
 
 ```toml
 # Example MCP server configurations
@@ -522,17 +522,17 @@ tool_timeout_sec = 120
 
 #### Session Continuation and Resumption
 
-Vibe supports continuing from previous sessions:
+codeMaster supports continuing from previous sessions:
 
 - **`--continue`** or **`-c`**: Continue from the most recent saved session
 - **`--resume SESSION_ID`**: Resume a specific session by ID (supports partial matching)
 
 ```bash
 # Continue from last session
-vibe --continue
+codemaster --continue
 
 # Resume specific session
-vibe --resume abc123
+codemaster --resume abc123
 ```
 
 Session logging must be enabled in your configuration for these features to work.
@@ -542,16 +542,16 @@ Session logging must be enabled in your configuration for these features to work
 Use the `--workdir` option to specify a working directory:
 
 ```bash
-vibe --workdir /path/to/project
+codemaster --workdir /path/to/project
 ```
 
-This is useful when you want to run Vibe from a different location than your current directory.
+This is useful when you want to run codeMaster from a different location than your current directory.
 
 ### Update Settings
 
 #### Auto-Update
 
-Vibe includes an automatic update feature that keeps your installation current. This is enabled by default.
+codeMaster includes an automatic update feature that keeps your installation current. This is enabled by default.
 
 To disable auto-updates, add this to your `config.toml`:
 
@@ -559,15 +559,15 @@ To disable auto-updates, add this to your `config.toml`:
 enable_auto_update = false
 ```
 
-### Custom Vibe Home Directory
+### Custom codeMaster Home Directory
 
-By default, Vibe stores its configuration in `~/.vibe/`. You can override this by setting the `VIBE_HOME` environment variable:
+By default, codeMaster stores its configuration in `~/.codemaster/`. You can override this by setting the `VIBE_HOME` environment variable:
 
 ```bash
-export VIBE_HOME="/path/to/custom/vibe/home"
+export VIBE_HOME="/path/to/custom/codemaster/home"
 ```
 
-This affects where Vibe looks for:
+This affects where codeMaster looks for:
 
 - `config.toml` - Main configuration
 - `.env` - API keys
@@ -578,7 +578,7 @@ This affects where Vibe looks for:
 
 ## Editors/IDEs
 
-Mistral Vibe can be used in text editors and IDEs that support [Agent Client Protocol](https://agentclientprotocol.com/overview/clients). See the [ACP Setup documentation](docs/acp-setup.md) for setup instructions for various editors and IDEs.
+Mistral codeMaster can be used in text editors and IDEs that support [Agent Client Protocol](https://agentclientprotocol.com/overview/clients). See the [ACP Setup documentation](docs/acp-setup.md) for setup instructions for various editors and IDEs.
 
 ## Resources
 
@@ -587,7 +587,7 @@ Mistral Vibe can be used in text editors and IDEs that support [Agent Client Pro
 
 ## Data collection & usage
 
-Use of Vibe is subject to our [Privacy Policy](https://legal.mistral.ai/terms/privacy-policy) and may include the collection and processing of data related to your use of the service, such as usage data, to operate, maintain, and improve Vibe. You can disable telemetry in your `config.toml` by setting `enable_telemetry = false`.
+Use of codeMaster is subject to our [Privacy Policy](https://legal.mistral.ai/terms/privacy-policy) and may include the collection and processing of data related to your use of the service, such as usage data, to operate, maintain, and improve codeMaster. You can disable telemetry in your `config.toml` by setting `enable_telemetry = false`.
 
 ## License
 
