@@ -148,7 +148,7 @@ The agent can ask multiple questions at once, displayed as tabs. Each question s
 
 ## Terminal Requirements
 
-Vibe's interactive interface requires a modern terminal emulator. Recommended terminal emulators include:
+codeMaster's interactive interface requires a modern terminal emulator. Recommended terminal emulators include:
 
 - **WezTerm** (cross-platform)
 - **Alacritty** (cross-platform)
@@ -165,19 +165,19 @@ Most modern terminals should work, but older or minimal terminal emulators may h
    cd /path/to/your/project
    ```
 
-2. Run Vibe:
+2. Run codeMaster:
 
    ```bash
-   vibe
+   codemaster
    ```
 
-3. If this is your first time running Vibe, it will:
+3. If this is your first time running codeMaster, it will:
 
-   - Create a default configuration file at `~/.vibe/config.toml`
-   - Prompt you to enter your API key if it's not already configured
-   - Save your API key to `~/.vibe/.env` for future use
+   - Create a default configuration file at `~/.codemaster/config.toml`
+   - Prompt you to configure your LLM provider (Ollama local or cloud API)
+   - Save your configuration for future use
 
-   Alternatively, you can configure your API key separately using `vibe --setup`.
+   Alternatively, you can configure your setup using `codemaster --setup`.
 
 4. Start interacting with the agent!
 
