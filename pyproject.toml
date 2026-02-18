@@ -57,10 +57,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/mistralai/mistral-vibe"
-Repository = "https://github.com/mistralai/mistral-vibe"
-Issues = "https://github.com/mistralai/mistral-vibe/issues"
-Documentation = "https://github.com/mistralai/mistral-vibe#readme"
+Homepage = "https://github.com/yourusername/codeMaster"
+Repository = "https://github.com/yourusername/codeMaster"
+Issues = "https://github.com/yourusername/codeMaster/issues"
+Documentation = "https://github.com/yourusername/codeMaster#readme"
 
 [build-system]
 requires = ["hatchling", "hatch-vcs", "editables"]
