@@ -96,7 +96,7 @@ After installation, codeMaster will be available via the `codemaster` command.
 
 ### Built-in Agents
 
-Vibe comes with several built-in agent profiles, each designed for different use cases:
+codeMaster comes with several built-in agent profiles, each designed for different use cases:
 
 - **`default`**: Standard agent that requires approval for tool executions. Best for general use.
 - **`plan`**: Read-only agent for exploration and planning. Auto-approves safe tools like `grep` and `read_file`.
@@ -106,7 +106,7 @@ Vibe comes with several built-in agent profiles, each designed for different use
 Use the `--agent` flag to select a different agent:
 
 ```bash
-vibe --agent plan
+codemaster --agent plan
 ```
 
 ### Subagents and Task Delegation
