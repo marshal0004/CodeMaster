@@ -11,7 +11,7 @@ from vibe.cli.textual_ui.widgets.no_markup_static import NoMarkupStatic
 from vibe.core.config import VibeConfig
 from vibe.setup.onboarding.base import OnboardingScreen
 
-    
+
 class ProviderSelectionScreen(OnboardingScreen):
     BINDINGS: ClassVar[list[BindingType]] = [
         Binding("ctrl+c", "cancel", "Cancel", show=False),
@@ -68,7 +68,7 @@ class ProviderSelectionScreen(OnboardingScreen):
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "btn-ollama":
             self.selected_provider = "ollama"
-            self._configure_and_next("deepseek-coder-1.3b")
+            self._configure_and_next("qwen2.5-coder")  # ✅ Supports tools!
         elif event.button.id == "btn-mistral":
             self.selected_provider = "mistral"
             self._configure_and_next("devstral-2")
