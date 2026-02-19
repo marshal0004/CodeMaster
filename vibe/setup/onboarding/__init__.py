@@ -6,7 +6,7 @@ from rich import print as rprint
 from textual.app import App
 
 from vibe.core.paths.global_paths import GLOBAL_ENV_FILE
-from vibe.setup.onboarding.screens import ApiKeyScreen, WelcomeScreen
+from vibe.setup.onboarding.screens import ApiKeyScreen, ProviderSelectionScreen, WelcomeScreen
 
 
 class OnboardingApp(App[str | None]):
@@ -16,9 +16,9 @@ class OnboardingApp(App[str | None]):
         self.theme = "textual-ansi"
 
         self.install_screen(WelcomeScreen(), "welcome")
+        self.install_screen(ProviderSelectionScreen(), "provider_selection")
         self.install_screen(ApiKeyScreen(), "api_key")
         self.push_screen("welcome")
-
 
 def run_onboarding(app: App | None = None) -> None:
     result = (app or OnboardingApp()).run()

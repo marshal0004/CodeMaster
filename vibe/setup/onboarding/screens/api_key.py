@@ -41,11 +41,27 @@ class ApiKeyScreen(OnboardingScreen):
 
     def __init__(self) -> None:
         super().__init__()
-        config = VibeConfig.model_construct()
-        active_model = config.get_active_model()
-        self.provider = config.get_provider_for_model(active_model)
+        import os
+        # Check if model was selected in provider screen
+        selected_model = os.environ.get("_CODEMASTER_SELECTED_MODEL")
+        if selected_model:
+            try:
+                config = VibeConfig.model_construct()
+                config.active_model = selected_model
+                active_model = config.get_active_model()
+                self.provider = config.get_provider_for_model(active_model)
+            except Exception:
+                config = VibeConfig.model_construct()
+                active_model = config.get_active_model()
+                self.provider = config.get_provider_for_model(active_model)
+        else:
+            config = VibeConfig.model_construct()
+            active_model = config.get_active_model()
+            self.provider = config.get_provider_for_model(active_model)
         # Ollama and other local providers don't require an API key
         self._skip_key = not bool(self.provider.api_key_env_var)
+
+
 
     def _compose_provider_link(self, provider_name: str) -> ComposeResult:
         if self.provider.name not in PROVIDER_HELP:
