@@ -311,14 +311,6 @@ DEFAULT_MODELS = [
         output_price=0.0,
     ),
 
-     ModelConfig(
-        name="qwen2.5-coder:7b",
-        provider="ollama",
-        alias="qwen2.5-coder",
-        temperature=0.2,
-        input_price=0.0,
-        output_price=0.0,
-    ),
     ModelConfig(
         name="deepseek-coder:1.3b",
         provider="ollama",
