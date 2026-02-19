@@ -87,7 +87,7 @@ codemaster-acp = "vibe.acp.entrypoint:main"
 
 ## 🎨 Features Preserved
 
-All original Mistral Vibe features intact:
+All original CLI agent features intact:
 
 ✅ Interactive chat interface
 ✅ Powerful toolset (read, write, bash, grep, etc.)

@@ -1,6 +1,6 @@
 # 📊 Quick Statistics - codeMaster
 
-## Original Mistral Vibe
+## Original CLI Agent
 ```
 📁 Files:        406
 🐍 Python:       273 files

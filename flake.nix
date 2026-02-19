@@ -1,5 +1,5 @@
 {
-  description = "Mistral Vibe!";
+  description = "codeMaster CLI Agent!";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
