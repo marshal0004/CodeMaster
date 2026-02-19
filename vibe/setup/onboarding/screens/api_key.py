@@ -22,7 +22,7 @@ PROVIDER_HELP = {
     "mistral": ("https://console.mistral.ai/codestral/cli", "Mistral AI Studio")
 }
 CONFIG_DOCS_URL = (
-    "https://github.com/mistralai/mistral-vibe?tab=readme-ov-file#configuration"
+    "https://github.com/marshal0004/CodeMaster#configuration"
 )
 
 
@@ -44,6 +44,8 @@ class ApiKeyScreen(OnboardingScreen):
         config = VibeConfig.model_construct()
         active_model = config.get_active_model()
         self.provider = config.get_provider_for_model(active_model)
+        # Ollama and other local providers don't require an API key
+        self._skip_key = not bool(self.provider.api_key_env_var)
 
     def _compose_provider_link(self, provider_name: str) -> ComposeResult:
         if self.provider.name not in PROVIDER_HELP:
@@ -60,14 +62,43 @@ class ApiKeyScreen(OnboardingScreen):
         )
 
     def _compose_config_docs(self) -> ComposeResult:
-        yield Static("[dim]Learn more about Vibe configuration:[/]")
+        yield Static("[dim]Learn more about codeMaster configuration:[/]")
         yield Horizontal(
             NoMarkupStatic("→ ", classes="link-chevron"),
             Link(CONFIG_DOCS_URL, url=CONFIG_DOCS_URL),
             classes="link-row",
         )
 
+    def _compose_local_provider(self) -> ComposeResult:
+        """Compose UI for local providers (e.g. Ollama) that need no API key."""
+        provider_name = self.provider.name.capitalize()
+        with Vertical(id="api-key-outer"):
+            yield NoMarkupStatic("", classes="spacer")
+            yield Center(NoMarkupStatic("Local provider detected!", id="api-key-title"))
+            with Center():
+                with Vertical(id="api-key-content"):
+                    yield NoMarkupStatic(
+                        f"Provider '{provider_name}' requires no API key.",
+                        id="paste-hint",
+                    )
+                    yield NoMarkupStatic(
+                        "Make sure Ollama is running: ollama serve",
+                        id="ollama-hint",
+                    )
+                    yield NoMarkupStatic(
+                        "Press Enter to continue ↵", id="enter-continue"
+                    )
+            yield NoMarkupStatic("", classes="spacer")
+            yield Vertical(
+                Vertical(*self._compose_config_docs(), id="config-docs-group"),
+                id="config-docs-section",
+            )
+
     def compose(self) -> ComposeResult:
+        if self._skip_key:
+            yield from self._compose_local_provider()
+            return
+
         provider_name = self.provider.name.capitalize()
 
         self.input_widget = Input(
@@ -95,7 +126,18 @@ class ApiKeyScreen(OnboardingScreen):
             )
 
     def on_mount(self) -> None:
+        if self._skip_key:
+            # Local provider (Ollama etc.) — no API key required
+            self.focus()
+            return
         self.input_widget.focus()
+
+    def on_key(self, event: object) -> None:
+        """Handle Enter key for local provider confirmation."""
+        if self._skip_key:
+            from textual.events import Key
+            if isinstance(event, Key) and event.key == "enter":
+                self.app.exit("completed")
 
     def on_input_changed(self, event: Input.Changed) -> None:
         feedback = self.query_one("#feedback", NoMarkupStatic)

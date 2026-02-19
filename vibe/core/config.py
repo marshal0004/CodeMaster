@@ -279,6 +279,13 @@ DEFAULT_PROVIDERS = [
         api_base="http://127.0.0.1:8080/v1",
         api_key_env_var="",  # NOTE: if you wish to use --api-key in llama-server, change this value
     ),
+    ProviderConfig(
+        name="ollama",
+        api_base="http://localhost:11434/v1",
+        api_key_env_var="",  # No API key needed for local Ollama
+        api_style="openai",
+        backend=Backend.GENERIC,
+    ),
 ]
 
 DEFAULT_MODELS = [
@@ -300,6 +307,41 @@ DEFAULT_MODELS = [
         name="devstral",
         provider="llamacpp",
         alias="local",
+        input_price=0.0,
+        output_price=0.0,
+    ),
+    ModelConfig(
+        name="deepseek-coder:1.3b",
+        provider="ollama",
+        alias="deepseek-coder-1.3b",
+        input_price=0.0,
+        output_price=0.0,
+    ),
+    ModelConfig(
+        name="deepseek-coder:latest",
+        provider="ollama",
+        alias="deepseek-coder",
+        input_price=0.0,
+        output_price=0.0,
+    ),
+    ModelConfig(
+        name="codellama:latest",
+        provider="ollama",
+        alias="codellama",
+        input_price=0.0,
+        output_price=0.0,
+    ),
+    ModelConfig(
+        name="llama3.1:latest",
+        provider="ollama",
+        alias="llama3.1",
+        input_price=0.0,
+        output_price=0.0,
+    ),
+    ModelConfig(
+        name="mistral:latest",
+        provider="ollama",
+        alias="ollama-mistral",
         input_price=0.0,
         output_price=0.0,
     ),
